@@ -32,6 +32,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # App-specific gems
   gem 'devise'
+  gem 'pry-rails'
+# Better Errors
+  gem "better_errors"
+  gem "binding_of_caller"
 
 
 group :production do
@@ -54,7 +58,5 @@ group :development, :test do
   gem 'thin'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  # Better Errors
-  gem "better_errors"
-  gem "binding_of_caller"
+
 end
