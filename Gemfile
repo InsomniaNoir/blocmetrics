@@ -36,7 +36,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Better Errors
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'figaro', '1.0'
 
+  # Use SCSS for stylesheets
+  gem 'bootstrap-sass'
 
 group :production do
   # PostgreSQL
