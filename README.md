@@ -1,6 +1,5 @@
 # Blocmetrics
 ===========
-___________
 
 There are plenty of good analytic services, but that doesn't mean I can't build a one myself! This analytics service will offer a few key features:
 
@@ -20,11 +19,11 @@ There are plenty of good analytic services, but that doesn't mean I can't build 
 
 #### Developers:
 1. Receive incoming events in an API controller.
-------
+=====================
 
-This project was created as part of an apprenticeship through [Bloc.io](http://www.bloc.io).
-
-Project progress was tracked using [Trello.com](https://trello.com/b/NAyouxzd)
+* This project was created as part of an apprenticeship through [Bloc.io](http://www.bloc.io).
+* Project progress was tracked using [Trello.com](https://trello.com/b/NAyouxzd)
+* View on [GitHub](https://github.com/InsomniaNoir/blocmetrics)
 
 
 *Blocmetrics*
