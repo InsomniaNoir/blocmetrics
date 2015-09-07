@@ -1,9 +1,11 @@
-<h1>Your Regsitered Applications!</h1>
-<%= @applications.each do |f| %>
-  <div class="col-md-4">
-    <ul style="list-style:none">
-      <li><%= f.name %></li>
-      <li><%= f.url %></li>
-    </ul>
-  </div>
+<h1>Your Registered Applications!</h1>
+<% if current_user %>
+  <%= @registered_applications.each do |f| %>
+    <div class="col-md-4">
+      <ul style="list-style:none">
+        <li><%= f.name %></li>
+        <li><%= f.url %></li>
+      </ul>
+    </div>
+  <% end %>
 <% end %>

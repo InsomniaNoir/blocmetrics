@@ -1,48 +1,42 @@
 class RegisteredApplicationsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @application = RegisteredApplication.all
+    @registered_applications = current_user.registered_applications.all
   end
 
   def new
-    @application = find_params_id
+    @registered_applications = RegisteredApplication.new
   end
 
   def edit
-    @application = find_params_id
+    @registered_applications = @user.applications.find(params[:id])
   end
 
   def show
-    @application = find_params_id
+    @user = current_user
+    @registered_applications = @user.applications.find(params[:user_id])
   end
 
   def create
-    @application = RegisteredApplication.new( application_params )
+    @user = current_user
+    @registered_applications = current_user.applications.build( application_params )
+    @registered_applications.user = @user
 
-    if @application.save
+    if @registered_applications.save
       flash[:notice] = "Your application has been registered."
-      redirect_to @application
+      redirect_to registered_applications_path(current_user)
     else
       flash[:error] = "Your application failed to register. Please try again."
       redirect_to :new
   end
 
-  def update
-    @application = find_params_id
-
-    if @application.update_attributes( wiki_params )
-      flash[:notice] = "Your application info has been updated."
-    else
-      flash[:error] = "Your application was not updated, please try again."
-    end
-    redirect_to @application
-  end
-
   def destroy
-    @application = find_params_id
+    @registered_applications = RegisteredApplication.find(params[:id])
 
-    if @application.destroy
+    if @registered_applications.destroy
       flash[:notice] = "Your application has been removed."
-      redirect_to registered_applications_path
+      redirect_to registered_applications_path(current_user)
     else
       flash[:error] = "Your application was not removed. Please try again."
       redirect_to :show
@@ -52,10 +46,7 @@ class RegisteredApplicationsController < ApplicationController
   private
 
   def application_params
-    params.require(:registered_application).permit(:name, :url)
+    params.require(:application).permit(:name, :url)
   end
-
-  def find_params_id
-    RegisteredApplication.find(params[:id])
-  end
+end
 end
