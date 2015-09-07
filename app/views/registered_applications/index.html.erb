@@ -1,2 +1,9 @@
-<h1>RegisteredApplications#index</h1>
-<p>Find me in app/views/registered_applications/index.html.erb</p>
+<h1>Your Regsitered Applications!</h1>
+<%= @applications.each do |f| %>
+  <div class="col-md-4">
+    <ul style="list-style:none">
+      <li><%= f.name %></li>
+      <li><%= f.url %></li>
+    </ul>
+  </div>
+<% end %>
