@@ -7,17 +7,61 @@
    <%= csrf_meta_tags %>
  </head>
  <body>
-   <ul>
-        <li><%= link_to "Home", root_path %></li>
-   </ul>
+<script>
+
+$(document).ready(function() {
+  $('[data-toggle=offcanvas]').click(function() {
+    $('.row-offcanvas').toggleClass('active');
+  });
+});
+</script>
+
+<div class="page-container">
+
+	<!-- top navbar - http://www.codeply.com/go/bp/rVRoIeef4T -->
+   <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <button type="button" class="pull-right btn btn-default" aria-label="Right Align">
+            <% if current_user %>
+            Hello <%= current_user.email %>! <button type="button" class="pull-right btn btn-default" aria-label="Right Align">
+              <%= button_to "Sign out", destroy_user_session_path, method: :delete %></button>
+          <% else %>
+            <span class="glyphicon glyphicon-share-alt" aria-hidden="true" id="sign-in">
+              <%= link_to "Sign In", new_user_session_path %>
+            </span>
+            <button type="button" class="pull-right btn btn-default" aria-label="Right Align">
+              <span class="glyphicon glyphicon-barcode" aria-hidden="true" id="sign-up">
+                <%= link_to "Sign Up", new_user_registration_path %>
+              </span>
+            </button>
+          <% end %>
+        </button>
+   	<div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Blocmetrics</a>
+   	</div>
+      </div>
+   </div>
+
+   <div class="container">
+     <div class="row row-offcanvas row-offcanvas-left">
+
+       <!-- sidebar -->
+       <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+           <ul class="nav">
+             <li class="active"></li>
+             <li><a href="#">Link 1</a></li>
+             <li><a href="#">Link 2</a></li>
+             <li><a href="#">Link 3</a></li>
+           </ul>
+       </div>
 
 <div class="pull-right user-info">
-  <% if current_user %>
-    Hello <%= current_user.email %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to "Sign In", new_user_session_path %> or
-    <%= link_to "Sign Up", new_user_registration_path %>
-  <% end %>
+
 </div>
 
     <% if flash[:notice] %>
