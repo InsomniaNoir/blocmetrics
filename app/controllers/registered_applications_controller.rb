@@ -10,17 +10,29 @@ class RegisteredApplicationsController < ApplicationController
   end
 
   def edit
-    @registered_applications = @user.applications.find(params[:id])
+    @registered_applications = @user.registered_applications.find(params[:id])
+  end
+
+  def update
+    @registered_application = @user.registered_applications.find(params[:id])
+
+    if @registered_application.update_attributes(app_params)
+      flash[:notice] = "Your Application Information has been updated."
+      redirect_to @registered_application
+    else
+      flash[:error] = "Your Application Information could not be updated at this time."
+      render :edit
+    end
   end
 
   def show
     @user = current_user
-    @registered_applications = @user.applications.find(params[:user_id])
+    @registered_applications = @user.registered_applications.find(params[:user_id])
   end
 
   def create
     @user = current_user
-    @registered_application = current_user.build(app_params)
+    @registered_application = current_user.registered_applications.build(app_params)
     @registered_application.user = @user
 
     if @registered_application.save
@@ -29,6 +41,7 @@ class RegisteredApplicationsController < ApplicationController
     else
       flash[:error] = "Your application failed to register. Please try again."
       redirect_to :new
+    end
   end
 
   def destroy
@@ -48,5 +61,5 @@ class RegisteredApplicationsController < ApplicationController
     def app_params
       params.require(:registered_application).permit(:name, :url)
     end
-  end
+
 end
