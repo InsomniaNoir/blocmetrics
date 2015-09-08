@@ -1,11 +1,11 @@
 <h1>Your Registered Applications!</h1>
 <% if current_user %>
-  <%= @registered_applications.each do |f| %>
+  <% @registered_applications.each do |application| %>
     <div class="col-md-4">
-      <ul style="list-style:none">
-        <li><%= f.name %></li>
-        <li><%= f.url %></li>
-      </ul>
+      <table class="table table-striped">
+        <td><%= link_to application.name, registered_appplications_show_path %></td>
+        <td><%= link_to application.url, application.url %></td>
+      </table>
     </div>
   <% end %>
 <% end %>

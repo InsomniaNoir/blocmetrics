@@ -20,10 +20,10 @@ class RegisteredApplicationsController < ApplicationController
 
   def create
     @user = current_user
-    @registered_applications = current_user.applications.build( application_params )
-    @registered_applications.user = @user
+    @registered_application = current_user.build(app_params)
+    @registered_application.user = @user
 
-    if @registered_applications.save
+    if @registered_application.save
       flash[:notice] = "Your application has been registered."
       redirect_to registered_applications_path(current_user)
     else
@@ -45,8 +45,8 @@ class RegisteredApplicationsController < ApplicationController
 
   private
 
-  def application_params
-    params.require(:application).permit(:name, :url)
+    def app_params
+      params.require(:registered_application).permit(:name, :url)
+    end
   end
-end
 end
