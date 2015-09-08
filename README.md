@@ -19,7 +19,7 @@ There are plenty of good analytic services, but that doesn't mean I can't build 
 
 #### Developers:
 1. Receive incoming events in an API controller.
-=====================
+
 
 * This project was created as part of an apprenticeship through [Bloc.io](http://www.bloc.io).
 * Project progress was tracked using [Trello.com](https://trello.com/b/NAyouxzd)
