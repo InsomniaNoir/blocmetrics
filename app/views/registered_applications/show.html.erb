@@ -2,9 +2,9 @@
   <div class="col-sm-9">
     <h1><%= @registered_application.name %></h1>
     <!-- <div class="row"> -->
-      <small><%= @registered_application.url %></small>
+      <small><%= link_to @registered_application.url %></small>
       <!-- <div class="col-md-6"> -->
-        <%= link_to "Add an Application", new_registered_application_path, class: 'btn btn-default glyphicon glyphicon-pencil' %>
+        <%= link_to "Add an Application", new_registered_application_path, class: 'glyphicon glyphicon-pencil' %>
         <%= link_to @registered_application, method: :delete do %>
           <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
         <% end %>
