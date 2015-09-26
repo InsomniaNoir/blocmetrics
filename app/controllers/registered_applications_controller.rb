@@ -6,11 +6,11 @@ class RegisteredApplicationsController < ApplicationController
   end
 
   def new
-    @registered_applications = RegisteredApplication.new
+    @registered_application = RegisteredApplication.new
   end
 
   def edit
-    @registered_applications = @user.registered_applications.find(params[:id])
+    @registered_application = @user.registered_applications.find(params[:id])
   end
 
   def update
@@ -26,9 +26,9 @@ class RegisteredApplicationsController < ApplicationController
   end
 
   def show
-    @registered_applications = current_user.registered_applications
+    @registered_application = RegisteredApplication.find(params[:id])
 
-    @events = @registered_application.events.group_by(&:name)
+    @events = @registered_application.events
   end
 
   def create
